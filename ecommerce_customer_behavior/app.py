@@ -1,12 +1,11 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-import os
+import psycopg2
 
 @st.cache_resource
 def get_conn():
-    import psycopg2
-    return psycopg2.connect(os.environ["DATABASE_URL"])
+    return psycopg2.connect(st.secrets["DATABASE_URL"])
 
 st.set_page_config(page_title="E-Commerce Analytics", layout="wide")
 st.title("📦 E-Commerce Customer Behavior Analysis")
